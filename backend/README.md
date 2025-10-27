@@ -5,21 +5,27 @@ It demonstrates complete CRUD operations (Create, Read, Update, Delete) with dat
 
 ---
 
-Postman API - https://sahilahmed0029-3594081.postman.co/workspace/Sahil-Ahmed's-Workspace~507292b8-beec-4de7-81da-d9594af9042c/collection/47691689-6736a4d4-595e-42b9-9ec4-7cd8ddda43d1?action=share&creator=47691689
-
 ## 🚀 Features
+- ✅ Create, Read, Update, Delete (CRUD) Todos
+- 💾 JSON file-based storage (no database needed)
+- 🧾 Clean, structured JSON responses
+- 🧠 Input validation
+- 🟢 Ready to deploy on Render / Railway
+- 🧍 Auto-generates sample data on first run
+---
 
-✅ CRUD APIs for managing todos  
-✅ Input validation middleware  
-✅ JSON-based local data persistence  
-✅ Clear success/error messages with data  
-✅ Auto-generates sample todos on first run  
-✅ Deployable on Render / Railway  
+## 🧑‍💻 Tech Stack
+
+- ⚙️ Node.js — JavaScript runtime environment
+- 🚀 Express.js — Fast, minimalist web framework for Node.js
+- 🧩 Body Parser — Middleware to parse incoming JSON request bodies
+- 💾 File System (fs) — Used to store and manage todos in a local JSON file
 
 ---
 
-## 📁 Folder Structure
 
+## 📁 Folder Structure
+```
 todo-api/
 │
 ├── data/
@@ -34,86 +40,130 @@ todo-api/
 ├── app.js # Main entry point
 ├── package.json # Dependencies & scripts
 └── README.md # Project documentation
-
-yaml
-Copy code
+```
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Clone the repository
+### 1️⃣ Open Backend - ToDo CRUD API
 ```bash
-git clone https://github.com/<your-username>/todo-api.git
-cd todo-api
-2️⃣ Install dependencies
-bash
-Copy code
-npm install
-3️⃣ Run the API
-bash
-Copy code
-npm run dev
-4️⃣ Server starts at:
-arduino
-Copy code
-http://localhost:5000
-🧠 Sample Data (auto-generated)
-If no todos.json exists, the app auto-creates one with:
+cd backend
+```
 
-json
-Copy code
+### 2️⃣ Install dependencies
+```
+npm install
+```
+
+### 3️⃣ Run the API
+```
+npm run dev
+```
+
+4️⃣ Server starts at:
+```
+http://localhost:5000
+```
+
+---
+
+
+## 🧠 Sample Data (auto-generated)
+> If no todos.json exists, the app auto-creates one with:
+
+```
 [
   { "id": 1, "title": "Buy groceries", "completed": false },
   { "id": 2, "title": "Finish the React project", "completed": true },
   { "id": 3, "title": "Go for a walk", "completed": false }
 ]
-📡 API Endpoints
-Method	Endpoint	Description	Request Body	Example Response
-GET	/todos	Get all todos	❌ None	json [ { "id": 1, "title": "Buy groceries", "completed": false } ]
-POST	/todos	Create a new todo	json { "title": "Learn Express", "completed": false }	json { "message": "✅ New todo created successfully!", "todo": { "id": 123, "title": "Learn Express", "completed": false } }
-PUT	/todos/:id	Update a todo by ID	json { "title": "Buy fruits", "completed": true }	json { "message": "✅ Todo updated successfully!", "updatedTodo": { "id": 1, "title": "Buy fruits", "completed": true } }
-DELETE	/todos/:id	Delete a todo by ID	❌ None	json { "message": "🗑️ Todo deleted successfully!", "deletedTodo": { "id": 1, "title": "Buy fruits", "completed": true } }
+```
 
-🧩 Validation Rules
-Field	Type	Required	Description
-title	string	✅ Yes	Task name or description
-completed	boolean	❌ Optional	Task completion status
+---
 
-If validation fails:
+## 📬 Postman Collection
 
-json
-Copy code
+- This Postman collection provides API endpoints for managing the **ToDo CRUD API**.  
+- To make testing easier, I’ve created a Postman collection containing all API endpoints.
+
+
+👉 **[Click here to open the Postman Collection](https://sahilahmed0029-3594081.postman.co/workspace/Sahil-Ahmed's-Workspace~507292b8-beec-4de7-81da-d9594af9042c/collection/47691689-6736a4d4-595e-42b9-9ec4-7cd8ddda43d1?action=share&creator=47691689)**  
+
+- Or you can import it manually:
+  - Open **Postman**
+  - Click **Import**
+  - Paste the above link
+  - Start testing the APIs 🎉
+
+
+---
+
+
+## 📦 How to Use
+
+### 🔥 Start your server:
+```
+npm start
+```
+
+### 🧭 Open your browser or Postman and visit:
+```
+http://localhost:5000/todos
+```
+
+### 📜 Perform CRUD operations:
+
+- GET `/todos` → View all todos
+- POST `/todos` → Add a new todo
+- PUT `/todos/id` → Edit a todo
+- DELETE `/todos/id` → Delete a todo
+
+### 💾 All changes will automatically persist in data file
+> `data/todos.json`
+
+---
+
+
+## 📡 API Endpoints
+|   Method   | Endpoint     | Description         | Request Body                                     | Sample Response                                                                                                 |
+| :--------: | ------------ | ------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+|   **GET**  | `/todos`     | Get all todos       | —                                                | `{ "success": true, "data": [ ...todos ] }`                                                                     |
+|  **POST**  | `/todos`     | Create a new todo   | `{ "title": "New Task", "completed": false }`    | `{ "message": "Todo created successfully", "data": { "id": 4, "title": "New Task", "completed": false } }`      |
+|   **PUT**  | `/todos/:id` | Update a todo by ID | `{ "title": "Updated Task", "completed": true }` | `{ "message": "Todo updated successfully", "data": { "id": 1, "title": "Updated Task", "completed": true } }`   |
+| **DELETE** | `/todos/:id` | Delete a todo by ID | —                                                | `{ "message": "Todo deleted successfully", "data": { "id": 1, "title": "Buy groceries", "completed": false } }` |
+
+
+---
+
+
+## 🧩 Validation Rules
+| Field       | Type    | Required   | Description              |
+| ----------- | ------- | ---------- | ------------------------ |
+| `title`     | string  | ✅ Yes      | Task name or description |
+| `completed` | boolean | ❌ Optional | Task completion status   |
+
+> If validation fails:
+
+```
 { "error": "Title is required and must be a string" }
-🧾 Example cURL Commands
-bash
-Copy code
-# Get all todos
-curl -X GET http://localhost:5000/todos
+```
 
-# Create a new todo
-curl -X POST http://localhost:5000/todos \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Learn Express.js"}'
+---
 
-# Update a todo
-curl -X PUT http://localhost:5000/todos/1 \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Buy groceries and snacks", "completed": true}'
 
-# Delete a todo
-curl -X DELETE http://localhost:5000/todos/1
-🧠 Example API Responses
-✅ GET /todos
-json
-Copy code
+
+## 🧠 Example API Responses
+### ✅ GET /todos
+```body
 [
   { "id": 1, "title": "Buy groceries", "completed": false },
   { "id": 2, "title": "Finish the React project", "completed": true }
 ]
-✅ POST /todos
-json
-Copy code
+```
+
+### ✅ POST /todos
+```
 {
   "message": "✅ New todo created successfully!",
   "todo": {
@@ -122,9 +172,10 @@ Copy code
     "completed": false
   }
 }
-✅ PUT /todos/:id
-json
-Copy code
+```
+
+### ✅ PUT /todos/:id
+```
 {
   "message": "✅ Todo updated successfully!",
   "updatedTodo": {
@@ -133,9 +184,10 @@ Copy code
     "completed": true
   }
 }
-✅ DELETE /todos/:id
-json
-Copy code
+```
+
+### ✅ DELETE /todos/:id
+```
 {
   "message": "🗑️ Todo deleted successfully!",
   "deletedTodo": {
@@ -144,54 +196,5 @@ Copy code
     "completed": true
   }
 }
-🌐 Deployment Guide
-🚀 Deploy on Render
-Push your code to GitHub.
+```
 
-Go to Render.com → New Web Service.
-
-Connect your GitHub repo.
-
-Configure:
-
-Build Command: npm install
-
-Start Command: npm start
-
-Deploy → Render assigns a live URL:
-
-arduino
-Copy code
-https://<your-app-name>.onrender.com/todos
-🌍 Deploy on Railway
-Go to Railway.app.
-
-Click New Project → Deploy from GitHub Repo.
-
-Connect your GitHub repository.
-
-Railway auto-detects Node.js and runs:
-
-sql
-Copy code
-npm install
-npm start
-Once deployed:
-
-arduino
-Copy code
-https://<your-project>.up.railway.app/todos
-⚙️ Environment Variables
-Variable	Default	Description
-PORT	5000	The port the server listens on
-
-You can override this during deployment (Render/Railway auto-assigns one).
-
-🧑‍💻 Tech Stack
-Node.js — JavaScript runtime
-
-Express.js — Web framework
-
-Body Parser — Parses JSON request bodies
-
-File System (fs) — Stores todos in JSON file

@@ -1,16 +1,113 @@
-# React + Vite
+# 👥 User Directory Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **React + TailwindCSS** web app that fetches and displays user data from [ReqRes API](https://reqres.in/api/users).  
+Includes **search, sorting, filtering, pagination, and responsive design** — built for clean UI and great performance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🌐 **Fetches live user data** from public API  
+- 🔍 **Search** users by **name** or **email**  
+- ↕️ **Sort** users by **first name** or **email**  
+- 🎯 **Filter** users (e.g., Gmail users, names starting with A)  
+- 📑 **Pagination** support for API pages  
+- 🎨 Beautiful **TailwindCSS** UI  
+- 📱 Fully **responsive** layout for all devices  
+- ⏳ **Loading spinner** during data fetching  
+- ☁️ **Easy deployment** to **Vercel / Netlify**
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Folder Structure
+```
+user-directory/
+├── public/
+│ └── favicon.ico
+├── src/
+│ ├── api/
+│ │ └── userApi.js
+│ ├── components/
+│ │ ├── SearchBar.jsx
+│ │ ├── SortDropdown.jsx
+│ │ ├── FilterDropdown.jsx
+│ │ ├── Pagination.jsx
+│ │ └── Spinner.jsx
+│ ├── pages/
+│ │ └── UserDirectory.jsx
+│ ├── App.jsx
+│ ├── main.jsx
+│ ├── index.css
+│ └── utils/
+│ └── helpers.js
+├── .gitignore
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| ⚙️ Category | 🧩 Tools Used |
+|--------------|----------------|
+| 💻 Frontend | React (Vite) ⚡ |
+| 🎨 Styling | Tailwind CSS 🎨 |
+| 🌐 API | [ReqRes API](https://reqres.in/api/users) 🔗 |
+| 📦 HTTP Client | Axios ⚙️ |
+| ☁️ Deployment | Netlify / Vercel 🚀 |
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Open frontend
+```bash
+cd frontend
+```
+
+### 2️⃣ Install Dependencies
+```
+npm install
+```
+
+### 3️⃣ Run the Development Server
+```
+npm run dev
+```
+> Now open → http://localhost:5173
+
+---
+
+## 🧩 API Reference
+### Endpoint:
+```
+GET https://reqres.in/api/users?page={page}
+```
+### Example Response:
+| Field        | Description       |
+| ------------ | ----------------- |
+| `avatar`     | Profile Image URL |
+| `name`       | User Name         |
+| `email`      | User Email        |
+
+---
+
+
+## 🧭 Core Functionalities
+| Feature               | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| 🔍 **Search**         | Search by first name, last name, or email        |
+| ↕️ **Sort**           | Sort alphabetically by first name or email       |
+| 🧰 **Filter**         | Filter by Gmail users or names                   |
+| 📑 **Pagination**     | Navigate between API pages (Prev/Next)           |
+| ⏳ **Loading Spinner** | Appears during data fetch                        |
+| 📱 **Responsive UI**  | Works seamlessly on mobile, tablet, desktop      |
+
+---
+
+## 📸 Screenshots
+### 🧑 Home Page - Data fetched from API
+> ![](./Screenshots/homepage.png)
+### 🧑 Search Bar - Sorting & Filter
+> ![](./Screenshots/sortfilter.png)
